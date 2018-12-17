@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Riecoin | FAQs</title>
+<meta charset="utf-8">
+<link rel="icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.1.1.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/jquery.equalheights.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.ui.totop.js"></script>
+<script>
+$(window).load(function () {
+    $().UItoTop({
+        easingType: 'easeOutQuart'
+    });
+});
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<link rel="stylesheet" media="screen" href="css/ie.css">
+<![endif]-->
+</head>
+<body>
+<header>
+  <div class="container_12">
+    <div class="grid_19">
+      <h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
+      <div class="clear"></div>
+    </div>
+    <div class="menu_block">
+      <nav>
+        <ul class="sf-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="with_ul"><a href="about.html">About</a>
+            <ul style="left:-20%; line-height: 2em;">
+			  <li><a href="about.html#team">Team</a></li>
+              <li><a href="about.html#tech">Techical Aspects</a></li>
+            </ul>
+          </li>
+          <li><a href="download.html">Downloads</a></li>
+          <li><a class="current" class="with_ul" href="community.html">Community</a>
+           <ul style="width:100px; line-height: 2em;">
+              <li><a href="community.html#android">Android</a></li>
+              <li><a href="community.html#block">Explorers</a></li>
+              <li><a href="community.html#blogs">Blogs</a></li>
+              <li><a href="community.html#exchanges">Exchanges</a></li>
+              <li><a href="community.html#forums">Forums</a></li>
+              <li><a href="community.html#games">Games</a></li>
+              <li><a href="community.html#multi">Multisignature</a></li>
+              <li><a href="community.html#paper">Paper Wallets</a></li>
+              <li><a href="community.html#pools">Pools</a></li>
+              <li><a href="community.html#social">Social Media</a></li>
+              <li><a href="community.html#translations">Translations</a></li>
+            </ul>
+          </li>
+           <li class="current"><a href="faq.html">FAQs</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a class="with_ul" href="contacts.html">Contact</a>
+            <ul style="width:100px">
+              <li><a href="contacts.html#donate">Donate</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</header>
+<div class="main">
+  <div class="content">
+    <div class="container_12">
+      <div class="clear"></div>
+      <div class="grid_9">
+        <h3 class="head1"><a name="faq">FAQs</a></h3>
+        <p class="text1 tx2" id="new">So, what is new about Riecoin?</p>
+       <p style="line-height: 2em;">The process of money creation in Bitcoin - referred to as mining - involves executing
+					 software that utilizes your hardware running sha256 hashes until a certain criterion is met.
+					  This part of the mining process is called generating a "Proof of work". The whole mining process also has a 
+					  critical role in processing transactions and providing security to the network. It is estimated that all the 
+					  processing power devoted to Bitcoin mining represents more computing power than several of the 
+					  largest supercomputers in the world combined. Wouldn't it be great to be able to use all 
+					  that massive power for something else? Even special purpose hardware was designed for Bitcoin mining. 
+					  Some consider this a waste of resources, while others argue that supporting a decentralized currency is hardly a 
+					  waste. We believe that the mining process required for currency to work does not need to include hashing functions
+					   as a Proof of Work, and that a "more useful" calculation can be done instead. That's the point of Riecoin: 
+					   the mining process, besides fulfilling its function to the operation of the network, generates series of prime 
+					   numbers as a by-product. This prime numbers are of interest to <a href="faq.html#constellation" style="color:blue">mathematicians and the scientific community</a>. 
+					   Riecoin is proof that it is possible to effectively harness all that massive computing power to something useful 
+					   other than hashing functions. Above all, Riecoin was launched fairly! There were no instamine since the first 576 blocks had 
+					   no reward. This allowed all users to have the chance to compile wallets despit their OS.</p>
+		 <p class="text1 tx2" id="pow">How does the "Proof of Work" work?</p>
+		<strong style="font-size:14px">Theory</strong>
+		   <p style="line-height: 2em;">Finding a prime number p takes O( log(p) ^ 4 ) work, while verifying if it's prime requires O( log(p) ^ 3 ) using the Rabin-Miller test. That's not much difference, so finding prime numbers is not practical for a PoW.<br><br>
+		   One possible solution for this is looking for prime number constellations (like twin prime numbers, or triplets, etc), that is n "consecutive" prime numbers. Consecutive in this case means that they are grouped as closely as possible minimizing the distance between the first and the last one. This takes O( log(p) ^ (n + 3) ), while verification still takes the cube of the log. This allows us to make the generation arbitrarily more difficult than the verification.<br><br>
+		   Difficulty can be adjusted by changing the length of the prime numbers. Riecoin currently uses constellations of size 6 (also known as prime sextuplets) which have the form p, p+4, p+6, p+10, p+12, p+16. So each block represents six prime numbers. 
+		   </p>
+		   <strong style="font-size:14px">Practice</strong>		   
+		    <p style="line-height: 2em;">Let S be the sha256 of the first part of the block header (the nonce is not needed).<br>
+		   In binary, let basep be an 1 concatenated with eight 0's, concatenated with S, concatenated with as many 0's as needed to reach the required difficulty. Let Z be that quantity of 0's.<br><br>
+		   Find X such that basep + X is the first prime of a prime constellation of size n, where n is hardcoded at 6. The value of X should not be larger than 2^Z: this last restriction removes any chance of using the same actual constellation as PoW for more than one block.<br><br>
+		   Since S and basep can be calculated from the block header up to the time field, only X needs to be stored in place of the usual nonce.<br><br>
+		   PoW verification is done using Rabin-Miller primality tests. The intention of the eight 0's before the hash is to minimize the influence that the value of the hash can have on the difficulty of finding a sextuplet.
+		   
+		   </p>
+		<p class="text1 tx2" id="different">How is Riecoin different from Primecoin?</p>			   	   
+      <ul  class="list"><li>Primecoin uses the Fermat primality test, which has some flaws. Carmichael numbers are not prime and still pass Fermat's test for all bases, however those are relatively rare. Secondly, in general, if Fermat's test says a number is prime, it has at least a 50% probability of being prime. Primecoin uses only one Fermat test with base 2. While base 2 may provide more confidence than the general bound of 50%, still many composites will pass as primes. What's worst, is that Euler-Lagrange-Lifchitz test used for the other primes in the chain assumes the previous number in the chain is prime. So if the chain starts with a number that is not prime, then the Euler-Lagrange-Lifchitz test is not guaranteed to work, and all numbers in the chain may be composite.
+						<br><strong>Short version</strong>: Primecoin numbers are not guarranteed to be prime, they may be Fermat pseudoprimes to the base 2. There is an infinite list of Fermat pseudoprimes to the base 2 <a href="http://oeis.org/A001567" style="color:blue">(oeis.org/A001567)</a>. Riecoin uses enough Rabin-Miller tests with random bases, so the probability of a number that is not prime being accepted by the majority of the Riecoin network is negligible. </li>
+						<li>We propose the n/s "range explored (numbers) per second" metric instead of pps (primes per second) or shorter-chains per second. This is the quantity of numbers tested (whether by sieve of explicit primality test) and discarded as not constituting a valid PoW per second. While it is still difficult to compare this number for different difficulties, it is a much better metric: it can be used to meaningfully compare different algorithms, hardware speed, etc as long as you have the same diff. More n/s always means more blocks. For example a mining rig would be advertised as having X n/<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6615260b0f080f0b130b">[email&#160;protected]</a> diff. Something similar like "multipliers per second" might be possible for Primecoin, but it wouldn't scale as well when difficulty grows. In Primecoin, PPS is "just for fun" and shorter chains per second may not be accurate to compare the performance of algorithms for full-length chains per second.</li>
+						<li>Assuming the <a href="http://www.claymath.org/millenium-problems/riemann-hypothesis" style="color:blue">Riemann Hypothesis</a> and the Hardy-Littlewood k-tuple conjectures are true, by using Hardy-Littlewood constants a miner can estimate the average time before a block is found, allowing profit calculations and to estimate the computing power of the network.</li>
+						<li>In Primecoin there is no practical way of estimating the time before finding a block, moreover difficulty 10.1 is easier than 9.9 making it impossible to estimate how secure the network is.</li>
+						<li>A centralized checkpoint system is implemented inside Primecoin. While it is disabled by default, if FUD about attacks start to spread, I believe some people will panic and enable it. A centralized checkpoint allows its controllers to perform double spends without any need for any % of hash rate. Can we be sure it will not be hacked and/or abused?</li>
+						<li>Riecoin is capped to a fixed amount of coins (84M), but Primecoin has no limit. While it is arguable, we believe our deflationary model - similar to Bitcoin's - is better.</li>
+						<li>1min block speed would bloat the blockchain and create more orphans, stales. We have 2.5min which was tested for years in LTC. I don't know of any 1min coin that has years of testing. I think it's not true that 1min is fast enough for waiting in a line when you buy a coffee: with blocks targeted each minute, you have a 1 in 150 chance of having to wait more than 5 minutes for a block, this would still be unacceptable for some coffee stores. Also, with 2.5 each block requires more work, meaning we will have larger prime numbers sooner.
+						</li>
+	  </ul>
+	  <br>
+	  <p class="text1 tx2" id="mine">How do I mine?</p>
+	  <p style="line-height: 2em;">You can use the built-in miner using the classic "setgenerate true", or (preferred) you can use the external cpu-miner rminerd, fork of Pooler's cpu-miner.At the moment only a CPU miner exists, but I'm sure a miner that makes use of the GPU will eventually be released.</p>
+	  <p class="text1 tx2" id="pool">How does pooled mining work?</p>
+	  <p style="line-height: 2em;">Having shares simply be blocks with lower difficulty does not work for pooled mining. Finding a prime sextuplet with small primes is not helpful towards the general goal of finding one with the network's required size.<br><br>
+	  So the way to implement it is by making pool shares be prime constellations of the same difficulty as desired, but with less primes. So for example if the requirements for a block are a sextuplet with difficulty n, then a quintuplet with the same difficulty could constitute a valid pool share (or quadruplet, or whatever the pool operator wishes).<br><br>
+	  Note that finding a quintuplet is O(log p) times easier than finding a sextuplet.<br><br>
+	  Pooled mining works because of the many quintuplets found, eventually one will be part of a sextuplet, thus being a valid block. One drawback of this implementation is that miners may optimize they prime number generation for quintuplets instead of sextuplets, finding more shares but less blocks. If only some miners did this, they would be receiving more than they deserved share of the reward, and if all did this, the reward would be fair but mining this way in a pool would be less profitable than solo mining. To avoid this problem, the pool software must validate that the shares do have the potential to be blocks according to some precomputed sieve. Careful crafting of this sieve will ensure that tuning the mining algorithm for finding blocks instead of shares is still the most profitable way to mine in the pool.
+	  </p>
+	  <p class="text1 tx2" id="constellation">What is the value of finding prime number constellations?</p>
+	  <p style="line-height: 2em;">Lots of mathematicians study prime numbers. Many conjectures on prime number constellations and prime number distribution in general rely on the <a href="http://www.claymath.org/millenium-problems/riemann-hypothesis" style="color:blue">Riemann Hypothesis</a>, which has a prize of 1M USD for anyone who can prove (or disprove) it. If they are willing to give that much money, it means exploring them should have some value.
+		It's not like we are solving the Riemann Hypothesis with Riecoin, but we will be verifying Hardy-Littlewood k-tuple conjectures (at the moment, for k = 6).
+		Even if the only value of Riecoin's proof of work algorithm is getting people interested in prime numbers, it already is worth trying.
+		</p>
+	  <p class="text1 tx2" id="composite">Rabin-Miller primality tests are probabilistic. What if a composite number is accepted as prime?</p>
+	  <p style="line-height: 2em;">The probability of a client accepting one number that is not prime is one in 2^80 for each prime in the constellation. This is very low. But this applies to each client, and since each client uses different random bases for testing, the probability of 2 clients accepting a block with a fake prime is 1/2^160. This number is really really low, and it's only for 2 clients: it approaches 0 exponentially as we add clients to the equation. So in the highly unlikely case that someone accepts a fake block, it will surely be orphaned later. It really is not likely that anyone can use this as an attack vector.</p>
+       	  <p class="text1 tx2" id="record">Will Riecoin break any world record?</p>
+       	  <p style="line-height: 2em;">It might. According to <a href="http://www.gigablast.com/get?q=&c=dmoz3&d=152016814139&cnsp=0" style="color:blue">this</a> the record for a prime sextuplet is 559 digits, which should be 1857 bits. Riecoin's starting (and minimum) difficulty is 304 bits, so if it ever reaches 1857 then every new block would be a record breaker.</p>
+       	  <p style="line-height: 2em;">Update: it did! <a href="https://sites.google.com/site/anthonydforbes/ktuplets.htm?attredirects=0" style="color:blue">click here to download the records</a></p>
+      	  <p class="text1 tx2" id="tuples">Why 6-tuples and not 5 or 7?</p>
+      	<p style="line-height: 2em;">The more the better because it makes verification easier relative to mining. But 7 would have been too difficult to mine, have in mind we need numbers of least 256 bits to hold the hash, and then some more. Minimum difficulty is 304 bits.</p>      
+        <div class="clear"></div>
+        
+      </div>
+      <div class="grid_3">
+        <h3 class="head1">FAQs' Table of Contents</h3>
+          <ul class="list" style="font-size: 16px;">
+						<li><a href="#new">So, what is new about Riecoin?</a></li>
+						<li><a href="#pow">How does the "Proof of Work" work?</a></li>
+						<li><a href="#different">How is Riecoin different from Primecoin?</a></li>
+						<li><a href="#mine">How do I mine?</a></li>
+						<li><a href="#pool">How does pooled mining work?</a></li>
+						<li><a href="#constellation">What is the value of finding prime number constellations?</a></li>
+						<li><a href="#composite">Rabin-Miller primality tests are probabilistic. What if a composite number is accepted as prime?</a></li>
+						<li><a href="#record">Will Riecoin break any world record?</a></li>
+						<li><a href="#tuples">Why 6-tuples and not 5 or 7?</a></li>
+					</ul>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="bottom_block">
+    <div class="container_12">
+      <div class="grid_2 prefix_2">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="grid_2">
+        <ul>
+          <li><a href="download.html">Downloads</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="grid_2">
+        <ul>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="contacts.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="grid_2">
+        <h4>Contact Us:</h4>
+        <a href="/cdn-cgi/l/email-protection#ddb4b3bbb29dafb4b8beb2b4b3f3b2afba"><span class="__cf_email__" data-cfemail="e78e898188a7958e8284888e89c9889580">[email&#160;protected]</span></a> </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container_12">
+ <div class="grid_12">
+      <div class="socials"> <a href="https://twitter.com/riecoin"></a> <a href="https://www.facebook.com/TheRiecoinCommunity"></a></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
